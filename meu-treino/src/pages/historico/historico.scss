@@ -1,0 +1,125 @@
+page-historico {
+}
+.iconepessoa{
+    display: block;
+    text-align: center;
+    font-size: 80px;
+    position: relative;
+ 
+
+}
+.linha{
+    list-style-type: initial; 
+}
+.cordehistoricotexto{
+    color: #fff;
+}
+
+.tamanhofoto{    
+
+
+
+    border-radius: 100%;
+   
+    width:100px;     
+    height:100px;
+    object-fit: cover;
+    border: 0;
+    margin-left: 100px;
+    transform: rotate(270deg);
+    margin: auto;
+    display: block;
+    margin-top: 10px;
+
+    border-width: 3px;
+    border-style: inset;
+    border-color:#fff;
+}
+
+
+
+.nome{
+    margin: auto;
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    position: relative;
+  
+    
+}
+
+
+.fundo{
+    background-color:#902923;
+    color: aliceblue;
+}
+
+.titulomenu{
+    font-size: 110px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+
+ .button-inner{
+        color: #fff;
+        background-color: #902923;      
+
+}
+
+.margem{
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.italico{
+    font-style: italic;
+}
+
+.nomepaciente{
+    margin-top: 5px;
+}
+
+.button-md {
+    border-radius: 0px;
+    overflow: hidden;
+    height: 3.6rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #902923;
+
+}
+
+.scroll-content {
+ 
+   
+}
+
+.final{
+    position: absolute;
+	bottom: 0;
+}
+.final2{
+    margin-block-end: 42px;
+}
+
+.final3{
+    margin-block-end: 80px;
+}
+
+.button-md:hover:not(.disable-hover){
+
+    background-color: #902923;    
+
+}
+
+.barralateral{
+    color: #444444;
+    margin-left: 15px;
+    font-weight: bold;
+
+
+}

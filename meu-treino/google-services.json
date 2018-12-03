@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "135220436581",
+    "firebase_url": "https://apppaciente-7efa0.firebaseio.com",
+    "project_id": "apppaciente-7efa0",
+    "storage_bucket": "apppaciente-7efa0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:135220436581:android:764d2cb7da3280eb",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "135220436581-knj1bfql4jghg5sp2uiv8dqt6nms8cq3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWrhbvEMPRWzYQwPCMruLm2_i0NYVa0jw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

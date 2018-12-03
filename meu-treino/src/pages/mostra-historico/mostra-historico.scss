@@ -1,0 +1,58 @@
+page-mostra-historico {
+
+  h3{
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 0px;
+
+  }
+  p{
+    font-size: 12;
+    text-align: justify;
+  }
+}
+
+.data{
+  font-size: 15px;
+}
+
+.margem{
+  margin-left: 25px;
+  margin-right: 25px;
+  
+
+}
+
+.fundo1{
+  background:#902923;
+  color: aliceblue;
+  block-size: 70px;
+  
+}
+
+.ori{
+  text-align: right;
+  margin-right: 25px;
+  font-size: 15px;
+}
+
+.fundo2{
+  color:black;
+  margin-top: 40px;  
+}
+
+.tituloconsulta{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+  margin-right: 5px;
+  text-transform: uppercase;
+
+}
+
+a{
+  color: #902923;
+  text-decoration:none;
+  font-size: 18px; 
+}
