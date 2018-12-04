@@ -6,32 +6,49 @@ import { MostraHistoricoPage } from '../mostra-historico/mostra-historico';
 //import * as io from 'socket.io-client';
 import { BackgroundMode } from '@ionic-native/background-mode';
 import {Camera, CameraOptions } from '@ionic-native/camera'
+import { ConstantesComponent } from '../../components/constantes/constantes';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'page-historico',
   templateUrl: 'historico.html'
 })
 export class HistoricoPage {
-  apiUrl = 'http://162.243.161.30:3015/api/v1/';
+  Constantes: ConstantesComponent = new ConstantesComponent;
+  apiUrl: string;
   token: string;
   expires: string;
   socket:any;
   idUsu: string;
   notificacao: string;
   existe: boolean = true;
-  public dadosPaciente: any = {
-    nome: ""
+  public dadosAluno: any = {
+    _id: "",
+    nome: "",
+    cpf: "",
+    IMC: "",
+    msg: "",
+    idade: "",
+    peso: "",
+    massaMagra: "",
+    massaGorda: "",
+    altura: "",
+    dataInicio: ""
   }
+  evolucaoExiste: boolean = false;
 
   public data: Date;
 
-  public listaConsultasTodas: any = [];
+  public listaTreinos: any = {treino: {}, treinos: []};
+ 
+  public evolucaoLista: any = [];
 
   headers: HttpHeaders;
 
   foto : any = 'assets/imgs/logobrandao.png';
 
   constructor(public navCtrl: NavController, public http: HttpClient, private alertCtrl: AlertController, private backgroundMode: BackgroundMode, private camera : Camera, private toastCtrl : ToastController) {
+    this.apiUrl = this.Constantes.url;
     this.backgroundMode.enable();
     this.headers = new HttpHeaders();
     this.token = localStorage.getItem("tokenAppPM");
@@ -41,30 +58,28 @@ export class HistoricoPage {
       this.navCtrl.push(LoginPage);
     }
     this.idUsu = localStorage.getItem('idUsuaAppPM');
-    //this.socket = io('http://162.243.161.30:4555');
-    //this.receive();
-    this.buscaPaciente();
-    this.buscaConsultas();
+    this.buscaAluno();
+    this.buscaEvolucao();
+    this.buscaTreinos();
   }
 
-  buscaPaciente() {
+  buscaAluno() {
     return new Promise(resolve => {
-      this.http.get(this.apiUrl+'paciente-mobile', {headers: this.headers}).subscribe(res => {
-        this.dadosPaciente = res;
+      this.http.get(this.apiUrl+'alunos/'+this.idUsu, {headers: this.headers}).subscribe(res => {
+        this.dadosAluno = res;
       }, error => {
         console.log("error");
       });
     });
   }
 
-  buscaConsultas() {
+  buscaTreinos() {
     return new Promise(resolve => {
-      this.http.get(this.apiUrl+'paciente-mobile/consultas', {headers: this.headers}).subscribe(res => {
-        this.listaConsultasTodas = res;
-        if(this.listaConsultasTodas.length > 0){
+      this.http.get(this.apiUrl+'treinos/'+this.idUsu, {headers: this.headers}).subscribe(res => {
+        this.listaTreinos = res;
+        if(this.listaTreinos.length > 0){
           this.data = res[0].data;
           this.existe = true;
-          console.log(this.data);
         }else{
           this.existe = false;
         }
@@ -74,12 +89,26 @@ export class HistoricoPage {
     });
   }
 
-  buscaHistorico(id, historico, data, titulo){
+  buscaEvolucao() {
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl+'evolucaos/mobile/evolucao/'+this.idUsu, {headers: this.headers}).subscribe(res => {
+        this.evolucaoLista = res;
+        if(this.evolucaoLista.length > 0) {
+          this.evolucaoExiste = true;
+        }else{
+          this.evolucaoExiste = false;
+        }
+      }, error => {
+        console.log("error");
+      });
+    });
+  }
+
+  buscaTreino(id, treino, nomeTreino){
     this.navCtrl.push(MostraHistoricoPage, {
       id: id,
-      historico: historico,
-      titulo: titulo,
-      data: data
+      treino: treino,
+      nomeTreino: nomeTreino
     });
   }
 
@@ -120,8 +149,6 @@ export class HistoricoPage {
   }
 
   removeFoto(){
-    
-    
     this.foto = 'assets/imgs/logobrandao.png';
   }
 
@@ -130,7 +157,7 @@ export class HistoricoPage {
             if(JSON.stringify(id) === JSON.stringify(this.idUsu)){
               this.notificacao = notificacao;
               this.notificacaoAlert();
-              this.buscaConsultas();
+              this.buscaTreinos();
             }
         });
   }

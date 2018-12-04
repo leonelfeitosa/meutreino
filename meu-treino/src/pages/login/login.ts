@@ -8,6 +8,7 @@ import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators/map';
 import { HistoricoPage } from '../historico/historico';
 import 'rxjs/add/operator/map';
+import { ConstantesComponent } from '../../components/constantes/constantes';
 
 
 @Component({
@@ -15,7 +16,7 @@ import 'rxjs/add/operator/map';
   templateUrl: 'login.html'
 })
 export class LoginPage {
-
+  Constantes: ConstantesComponent = new ConstantesComponent;
   cpf_cnpj = '';
   DECIMAL_SEPARATOR=".";
   GROUP_SEPARATOR=",";
@@ -26,7 +27,7 @@ export class LoginPage {
   cpf: string;
   senha: string;
   retornoLogin: DadosPage = new DadosPage(this.modalCtrl);
-  apiUrl = 'http://162.243.161.30:3015/api/v1/';
+  apiUrl: string;
   mensagem: string;
   expires: string;
   sair: string;
@@ -39,6 +40,7 @@ export class LoginPage {
     public navParams: NavParams,
     private toastCtrl : ToastController
     ){
+      this.apiUrl = this.Constantes.url;
       this.sair = navParams.get('sair');
       if(this.sair){
         this.logout();
@@ -57,7 +59,7 @@ export class LoginPage {
     }
 
     logar() {
-      this.http.post(this.apiUrl+'login', {cpf: this.cpf, senha: this.senha, usuario: 'Paciente'})
+      this.http.post(this.apiUrl+'login', {cpf: this.cpf, senha: this.senha, usuario: 'Aluno'})
       .subscribe((data: DadosPage) => {
         this.retornoLogin = data;
         localStorage.setItem('tokenAppPM', this.retornoLogin.token);
@@ -79,9 +81,9 @@ export class LoginPage {
       });
     } 
     logout(){
-      localStorage.setItem('tokenAppPM', '');
-      localStorage.setItem('expiresAppPM', '');
-      localStorage.setItem('idUsuaAppPM', '');
+      localStorage.removeItem('tokenAppPM');
+      localStorage.removeItem('expiresAppPM');
+      localStorage.removeItem('idUsuaAppPM');
     }
     format(valString) {
       if (!valString) {
