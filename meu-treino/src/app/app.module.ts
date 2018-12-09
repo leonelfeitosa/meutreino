@@ -16,6 +16,8 @@ import { MostraHistoricoPage } from '../pages/mostra-historico/mostra-historico'
 import { DadosPage } from '../pages/login/dados';
 import { BackgroundMode } from '@ionic-native/background-mode';
 import { Camera } from '@ionic-native/camera';
+import { SQLite } from '@ionic-native/sqlite'
+import { Network } from '@ionic-native/network';
 
 @NgModule({
   declarations:
@@ -48,8 +50,10 @@ import { Camera } from '@ionic-native/camera';
     StatusBar,
     SplashScreen,
     BackgroundMode,
+    SQLite,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    Camera
+    Camera,
+    Network
   ]
 })
 export class AppModule {}
