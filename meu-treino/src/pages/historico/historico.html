@@ -18,6 +18,7 @@
           </div>
 
           <div *ngIf="evolucaoExiste">
+<<<<<<< HEAD
               <br>
             <p class="marge barralateral italico"> Peso: {{ evolucaoLista[0].peso }}kg </p>
             <p class="marge barralateral italico"> Percentual Massa Magra: {{ evolucaoLista[0].massaMagra }} </p>
@@ -26,6 +27,14 @@
             <p class="marge barralateral italico linha"> IMC: {{ evolucaoLista[0].IMC }} </p>
             <br>
             <p class="marge barralateral italico linha"> {{ dadosAluno.msg }} </p>
+=======
+              <p class="marge barralateral italico"> Peso: {{ evolucao.peso }}kg </p>
+              <p class="marge barralateral italico"> Massa Magra: {{ evolucao.massaMagra }}kg </p>
+              <p class="marge barralateral italico"> Massa Gorda: {{ evolucao.massaGorda }}kg </p>
+              <p class="marge barralateral italico"> Cintura: {{ evolucao.cintura }}cm </p>
+              <p class="marge barralateral italico linha"> IMC: {{ evolucao.IMC }} </p>
+              <p class="marge barralateral italico linha"> {{ dadosAluno.msg }} </p>
+>>>>>>> 1dddf6a4e8473d4e3cadac0ed82e7d837c5d74eb
           </div>
           <br>
           <button class="final final3" ion-button block (click)="tirarFoto()">Alterar foto</button>
@@ -74,12 +83,17 @@
 
     <img class="tamanhofoto" [hidden]="!foto" src="{{foto}}">
     <h2 class="nome nomepaciente">{{ dadosAluno.nome }}</h2>
+<<<<<<< HEAD
     <br>
     <p class="espacopara margem cordehistoricotexto" [innerHTML]="listaTreinos.treino.descricao">
+=======
+
+    <p class="margem cordehistoricotexto" [innerHTML]="descricao">
+>>>>>>> 1dddf6a4e8473d4e3cadac0ed82e7d837c5d74eb
     </p>
     <br>
     <ion-list>
-      <button class="borda" ion-item *ngFor="let item of listaTreinos.treinos" (click)="buscaTreino(item._id, item, item.nome)">
+      <button class="borda" ion-item *ngFor="let item of listaTreinos" (click)="buscaTreino(item.treino_id, item, item.nome)">
         <p class="titulomenu italico">{{ item.nome }}</p>
       </button>
     </ion-list>
