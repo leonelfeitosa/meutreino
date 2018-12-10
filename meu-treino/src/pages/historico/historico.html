@@ -6,31 +6,34 @@
       <ion-content>
         <ion-list>
 
-          <img class="tamanhofoto" [hidden]="!foto" src="{{foto}}">
+          <img class="tamanhofoto2" [hidden]="!foto" src="{{foto}}">
           <h5 class="nome nomepaciente barralateral italico">{{ dadosAluno.nome }}</h5>
           <div *ngIf="!evolucaoExiste">
             <p class="marge barralateral italico"> Peso: {{ dadosAluno.peso }}kg </p>
-            <p class="marge barralateral italico"> Massa Magra: {{ dadosAluno.massaMagra }}kg </p>
-            <p class="marge barralateral italico"> Massa Gorda: {{ dadosAluno.massaGorda }}kg </p>
-            <p class="marge barralateral italico"> Cintura: {{ dadosAluno.cintura }}cm </p>
+            <p class="marge barralateral italico"> Percentual Massa Magra: {{ dadosAluno.massaMagra }</p>
+            <p class="marge barralateral italico"> Percentual de Gordura: {{ dadosAluno.massaGorda }}</p>
+            <p class="marge barralateral italico"> Relação Cintura Quadril: {{ dadosAluno.cintura }} cm </p>
             <p class="marge barralateral italico linha"> IMC: {{ dadosAluno.IMC }} </p>
             <p class="marge barralateral italico linha"> {{ dadosAluno.msg }} </p>
           </div>
 
           <div *ngIf="evolucaoExiste">
+              <br>
             <p class="marge barralateral italico"> Peso: {{ evolucaoLista[0].peso }}kg </p>
-            <p class="marge barralateral italico"> Massa Magra: {{ evolucaoLista[0].massaMagra }}kg </p>
-            <p class="marge barralateral italico"> Massa Gorda: {{ evolucaoLista[0].massaGorda }}kg </p>
-            <p class="marge barralateral italico"> Cintura: {{ evolucaoLista[0].cintura }}cm </p>
+            <p class="marge barralateral italico"> Percentual Massa Magra: {{ evolucaoLista[0].massaMagra }} </p>
+            <p class="marge barralateral italico"> Percentual de Gordura: {{ evolucaoLista[0].massaGorda }} </p>
+            <p class="marge barralateral italico"> Relação Cintura Quadril: {{ evolucaoLista[0].cintura }}cm </p>
             <p class="marge barralateral italico linha"> IMC: {{ evolucaoLista[0].IMC }} </p>
+            <br>
             <p class="marge barralateral italico linha"> {{ dadosAluno.msg }} </p>
           </div>
           <br>
           <button class="final final3" ion-button block (click)="tirarFoto()">Alterar foto</button>
           <button class="final final2" ion-button block (click)="removeFoto()">Remover foto</button>
+     <br>
           <button class="final" ion-button block (click)="sair()">Sair </button>
         </ion-list>
-      </ion-content>
+      </ion-content> 
     </ion-menu>
 
 
@@ -45,9 +48,9 @@
             <div *ngFor="let item of evolucaoLista">
               <p class="marge barralateral italico"> Data: {{ item.dataAvaliacao }} </p>
               <p class="marge barralateral italico"> Peso: {{ item.peso }}kg </p>
-              <p class="marge barralateral italico"> Massa Magra: {{ item.massaMagra }}kg </p>
-              <p class="marge barralateral italico"> Massa Gorda: {{ item.massaGorda }}kg </p>
-              <p class="marge barralateral italico"> Cintura: {{ item.cintura }}cm </p>
+              <p class="marge barralateral italico"> Percentual Massa Magra: {{ item.massaMagra }} </p>
+              <p class="marge barralateral italico"> Percentual de Gorda: {{ item.massaGorda }} </p>
+              <p class="marge barralateral italico"> Relação Cintura Quadril : {{ item.cintura }}cm </p>
               <p class="marge barralateral italico"> IMC: {{ item.IMC }} </p>
               <hr>
             </div>
@@ -71,10 +74,10 @@
 
     <img class="tamanhofoto" [hidden]="!foto" src="{{foto}}">
     <h2 class="nome nomepaciente">{{ dadosAluno.nome }}</h2>
-
-    <p class="margem cordehistoricotexto" [innerHTML]="listaTreinos.treino.descricao">
+    <br>
+    <p class="espacopara margem cordehistoricotexto" [innerHTML]="listaTreinos.treino.descricao">
     </p>
-
+    <br>
     <ion-list>
       <button class="borda" ion-item *ngFor="let item of listaTreinos.treinos" (click)="buscaTreino(item._id, item, item.nome)">
         <p class="titulomenu italico">{{ item.nome }}</p>
