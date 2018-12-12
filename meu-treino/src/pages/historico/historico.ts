@@ -66,10 +66,10 @@ export class HistoricoPage {
     }
 
     this.idUsu = localStorage.getItem('idUsuaAppPM');
+    this.getAluno(this.idUsu);
+    this.getEvolucao();
+    this.getTreinos();
     if (this.Constantes.getVerifica() == 0) {
-      this.getAluno(this.idUsu);
-      this.getEvolucao();
-      this.getTreinos();
       this.Constantes.setVerifica(1);
       this.http.get(this.apiUrl + 'evolucaos/mobile/evolucao/testa/' + this.idUsu, { headers: this.headers }).subscribe(res => {
         this.createDatabase()
@@ -81,6 +81,9 @@ export class HistoricoPage {
           });
       }, error => {
         console.log("errorA");
+        this.getAluno(this.idUsu);
+        this.getEvolucao();
+        this.getTreinos();
       });
     }
   }
@@ -93,11 +96,11 @@ export class HistoricoPage {
   }
 
   public createDatabase() {
+    this.removeAluno();
+    this.removeEvolucao();
+    this.removeTreino();
     return this.getDB()
       .then((db: SQLiteObject) => {
-        this.removeAluno();
-        this.removeEvolucao();
-        this.removeTreino();
         this.createTables(db);
       })
       .catch(e => console.log(e));
